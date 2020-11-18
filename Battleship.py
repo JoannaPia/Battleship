@@ -1,18 +1,25 @@
 from random import randint
 import sys
+import os
 from colorama import Fore, Back, Style
 
+class Parameters:
+    red = '\033[91m'
+    yellow = '\033[93m'
+    green = '\033[92m'
+
+    # def change_color(self, color, text):
+    #     return color + text + Parameters.reset
+
+
 board = []
-
-
-
 
 for x in range(6):
     board.append(["O"] * 6)
 
 
 def print_menu():
-    print(Fore.GREEN +
+    print(Fore.BLUE +
     """\n
                               (          (        )  (    (     
    (     (       *   )  *   ) )\ )       )\ )  ( /(  )\ ) )\ )  
@@ -37,10 +44,10 @@ def print_menu():
  \_________________________________________________________________________|
    \n                                                
     Hello everybody! You need choice game options to start the game.
+    You have ten moves to win. Good lucky!
     \n""")
 
-    menu_handler()
-    
+    menu_handler() 
 
 def menu_handler(): ## To nie działa jeszcze wcale a wcale 
 
@@ -89,6 +96,8 @@ ship_col = random_col(board)
 
 
 def turn_handler():
+
+
     for turn in range(11):
         print("Turn"), turn
         guess_row = int(input("Guess Row:"))
@@ -105,19 +114,44 @@ def turn_handler():
                 print("You guessed that one already.")
             else:
                 print("You missed my battleship!")
-                board[guess_row][guess_col] =  "X"
+                board[guess_row][guess_col] == "M"
         if turn == 10:
-            print(Fore.RED + "Game Over")
+            print"Game Over")
         turn =+ 1
         print_board(board)
+    
+
+def ask_yes_no(question):
+
+    response = None
+    while response not in ("yes", "no"):
+        response = input(question).lower()
+    return response
+
+def question_start_game():
+
+    computer_question = ask_yes_no("Do you want play again? Answer yes or no:")
+    
+    if computer_question == "yes":
+        print("You will start the game.")
+        os.system("cls || clear")
+        main()
+    elif computer_question == "no":
+        print("See you soon")
+        sys.exit()
+        
 
 def main():
+
     print_menu()
     print_board(board)
     random_row(board)
     random_col(board)
     turn_handler()
+    question_start_game()
+    
 
 if __name__ == "__main__":
    
     main()
+    
