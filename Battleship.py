@@ -116,7 +116,7 @@ def turn_handler():
                 print("You missed my battleship!")
                 board[guess_row][guess_col] == "M"
         if turn == 10:
-            print"Game Over")
+            print("Game Over")
         turn =+ 1
         print_board(board)
     
