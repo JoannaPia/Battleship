@@ -70,9 +70,9 @@ def menu_handler(): ## To nie działa jeszcze wcale a wcale
 
 
 def print_board(board):
-    print(" ","1","2","3","4","5")
+    print(" ","0","1","2","3","4")
 
-    for i, row in enumerate(board, 1):
+    for i, row in enumerate(board, 0):
         print( i, (" ").join(row))
 
 def random_row(board):
@@ -98,14 +98,14 @@ def turn_handler():
         if guess_row == ship_row and guess_col == ship_col:
             print("Congratulations! You sunk my battleship!")
             break
-        else:
+        else:            
             if (guess_row < 0 or guess_row > 5) or (guess_col < 0 or guess_col > 5):
                 print("Oops, that's not even in the ocean.")
-            elif(board[guess_row][guess_col] =="X"):
-                print("You guessed that one already.")
-            else:
+            elif(board[guess_row][guess_col] = "M"):
                 print("You missed my battleship!")
-                board[guess_row][guess_col] = "M"
+            else:
+                board[guess_row][guess_col] == "M"
+                print("You guessed this one alredy Capitan!")
         if turn == 10:
             print("Game Over")
         turn =+ 1
@@ -133,7 +133,7 @@ def question_start_game():
         
 
 def main():
-
+    
     print_menu()
     menu_handler()
     print_board(board)
