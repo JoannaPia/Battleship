@@ -14,8 +14,8 @@ class Parameters:
 
 board = []
 
-for x in range(6):
-    board.append(["O"] * 6)
+for x in range(5):
+    board.append(["O"] * 5)
 
 
 def print_menu():
@@ -47,7 +47,7 @@ def print_menu():
     You have ten moves to win. Good lucky!
     \n""")
 
-    menu_handler() 
+ 
 
 def menu_handler(): ## To nie działa jeszcze wcale a wcale 
 
@@ -58,32 +58,22 @@ def menu_handler(): ## To nie działa jeszcze wcale a wcale
                             1. Start 
                             2. Quit
                             Choice: """)
-        user_choice = choice(number)
-    return number   
 
-        # if number == 1:
-        #     print("Let's play Capitan!")
-        # elif number == 2:
-        #     sys.exit()
-
-
-def choice(user_input):
-
-    if user_input == "1":
+    if number == "1":
         print("Let's play Capitan!")
-    if user_input == "2":
+    if number == "2":
         sys.exit()
     else:
-        if len(user_input) != 1 and user_input.isalpha():
+        if len(number) != 1 or number.isalpha():
             print("You need write one number!")
     return False
 
 
 def print_board(board):
-    print("1","2","3","4","5","6")
+    print(" ","1","2","3","4","5")
 
-    for row in board:
-        print((" ").join(row))
+    for i, row in enumerate(board, 1):
+        print( i, (" ").join(row))
 
 def random_row(board):
     return randint(0, len(board) - 1)
@@ -99,7 +89,8 @@ def turn_handler():
 
 
     for turn in range(11):
-        print("Turn"), turn
+        turn = 0
+        print("Turn" + " " + str(turn))
         guess_row = int(input("Guess Row:"))
         guess_col = int(
             input("Guess Col:"))
@@ -110,11 +101,11 @@ def turn_handler():
         else:
             if (guess_row < 0 or guess_row > 5) or (guess_col < 0 or guess_col > 5):
                 print("Oops, that's not even in the ocean.")
-            elif(board[guess_row][guess_col] == "X"):
+            elif(board[guess_row][guess_col] =="X"):
                 print("You guessed that one already.")
             else:
                 print("You missed my battleship!")
-                board[guess_row][guess_col] == "M"
+                board[guess_row][guess_col] = "M"
         if turn == 10:
             print("Game Over")
         turn =+ 1
@@ -144,6 +135,7 @@ def question_start_game():
 def main():
 
     print_menu()
+    menu_handler()
     print_board(board)
     random_row(board)
     random_col(board)
