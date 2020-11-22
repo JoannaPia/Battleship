@@ -99,13 +99,13 @@ def turn_handler():
             print("Congratulations! You sunk my battleship!")
             break
         else:            
-            if (guess_row < 0 or guess_row > 5) or (guess_col < 0 or guess_col > 5):
+            if (guess_row < 0 or guess_row > 4) or (guess_col < 0 or guess_col > 4):
                 print("Oops, that's not even in the ocean.")
-            elif(board[guess_row][guess_col] = "M"):
+            elif (board[guess_row][guess_col] == "X"):
                 print("You missed my battleship!")
             else:
-                board[guess_row][guess_col] == "M"
-                print("You guessed this one alredy Capitan!")
+                print ("You missed my battleship!")
+                board[guess_row][guess_col]="X"
         if turn == 10:
             print("Game Over")
         turn =+ 1
