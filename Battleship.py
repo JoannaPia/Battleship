@@ -88,7 +88,7 @@ ship_col = random_col(board)
 def turn_handler():
 
 
-    for turn in range(11):
+    for turn in range(10):
         turn = 0
         print("Turn" + " " + str(turn))
         guess_row = int(input("Guess Row:"))
